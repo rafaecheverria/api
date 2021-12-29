@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
@@ -48,8 +47,4 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('/auth/login', 'App\Http\Controllers\TokensController@login');
     Route::post('/auth/refresh', 'App\Http\Controllers\TokensController@refreshToken');
     Route::post('/auth/logout', 'App\Http\Controllers\TokensController@logout');
-=======
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
->>>>>>> 2b7464fad4ded81f1991eaa255a8948ee9edaad3
 });

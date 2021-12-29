@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Facade;
-
 return [
 
     /*
@@ -193,7 +191,6 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'aliases' => [
 
         'App' => Illuminate\Support\Facades\App::class,
@@ -236,10 +233,5 @@ return [
         // 'Date' => Jenssegers\Date\Date::class,
         // 'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
-=======
-    'aliases' => array_merge(Facade::defaultAliases(), [
-        // ...
-    ]),
->>>>>>> 2b7464fad4ded81f1991eaa255a8948ee9edaad3
 
 ];
