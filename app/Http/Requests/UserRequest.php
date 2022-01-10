@@ -6,25 +6,15 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
-            'rut'              => 'required|unique:users|max:9',
+            'rut'              => 'required|unique:users|max:10',
             'nombres'          => 'required',
             'apellidos'        => 'required',
             'email'            => 'required|email|unique:users',
@@ -41,7 +31,7 @@ class UserRequest extends FormRequest
     {
         return [
             'rut.required'             => 'El campo rut es obligatorio.',
-            'rut.max:9'                => 'El campo rut debe tener un maxino de 9 digitos.',
+            'rut.max'                  => 'El campo rut debe tener un maximo de 10 caracteres.',
             'rut.unique'               => 'El campo rut ya existe en nuestros registros.',
             'nombres.required'         => 'El campo nombres es obligatorio.',
             'apellidos.required'       => 'El campo apellidos es obligatorio.',
@@ -53,6 +43,5 @@ class UserRequest extends FormRequest
             'departamento_id.required' => 'El campo departamento es obligatorio.',
             'cargo_id.required'        => 'El campo cargo es obligatorio.',
         ];
-
     }
 }
