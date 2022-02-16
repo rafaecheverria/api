@@ -10,10 +10,7 @@ class DepartamentosController extends Controller
 
     public function selectDepartamentoReg($id)
     {
-        $departamentos = Departamento::select('id', 'departamento')
-                                    ->where("region_id", "=", $id)
-                                    ->orderBy('departamento', 'ASC')
-                                    ->get();
+        $departamentos = Departamento::DeptoReg($id);
 
         return['departamentos' => $departamentos];
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Departamento;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use \App\Http\Requests\UserRequest;
@@ -63,11 +64,14 @@ class UserController extends Controller
 
     public function getUser($id)
     {
-        return response()->json($id);
-        // $user = User::findOrFail($id);
-        // return response()->json([
-        //     'user' => $user
-        // ]);
+        //return response()->json($id);
+
+         $user = User::findOrFail($id);
+         $departamentos = Departamento::DeptoReg($user->region_id);
+         return response()->json([
+             'user' => $user,
+             'departamentos' => $departamentos
+         ]);
     }
 
     // public function getApi()

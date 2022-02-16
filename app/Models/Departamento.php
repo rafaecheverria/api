@@ -15,6 +15,7 @@ class Departamento extends Model
         'id', 'departamento', 'abreviado', 'sigla', 'region_id'
     ];
 
+
     public function user()
 
     {
@@ -26,6 +27,17 @@ class Departamento extends Model
 
     {
         return $this->belongsTo(Region::class);
+
+    }
+
+    public static function DeptoReg($id)
+    {
+        $departamentos = Departamento::select('id', 'departamento')
+                                    ->where("region_id", "=", $id)
+                                    ->orderBy('departamento', 'ASC')
+                                    ->get();
+
+        return $departamentos;
 
     }
 }
