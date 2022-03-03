@@ -29,4 +29,42 @@ class RolesController extends Controller
             'roles' => $roles
         ];
     }
+
+    public function addRol(Request $request)
+    {
+        $rol = new Role();
+        $rol->name = $request->name;
+        $rol->save();
+        return [
+            'success' => true,
+            'rol' => $rol
+        ];
+    }
+
+    public function update(Request $request, $id)
+    {
+          $rol = Role::findOrFail($id);
+          $rol->name = $request->name;
+          $rol->save();
+
+        return[
+            'success' =>  true,
+        ];
+    }
+
+    public function getRol($id)
+    {
+         $role = Role::findOrFail($id);
+         return response()->json([
+             'role' => $role,
+         ]);
+    }
+
+    public function destroy($id)
+    {
+        Role::destroy($id);
+        return response()->json([
+            'success' => true,
+        ]);
+    }
 }

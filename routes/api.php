@@ -26,12 +26,23 @@ Route::group(['middleware' => ['jwt.auth'], 'prefix' => 'v1'], function () {
     Route::get('/api', 'App\Http\Controllers\UserController@getApi');
     Route::post('/users/add', 'App\Http\Controllers\UserController@addUser');
     Route::get('/user/{id}', 'App\Http\Controllers\UserController@getUser');
+    Route::put('/user/update/{id}', 'App\Http\Controllers\UserController@update');
+    Route::post('/user/delete/{id}', 'App\Http\Controllers\UserController@destroy');
+
 
     //Roles
     Route::get('/roles', 'App\Http\Controllers\RolesController@index');
+    Route::get('/role/{id}', 'App\Http\Controllers\RolesController@getRol');
+    Route::post('/roles/add', 'App\Http\Controllers\RolesController@addRol');
+    Route::put('/role/update/{id}', 'App\Http\Controllers\RolesController@update');
+    Route::post('/role/delete/{id}', 'App\Http\Controllers\RolesController@destroy');
 
     //Permisos
     Route::get('/permisos', 'App\Http\Controllers\PermisosController@index');
+    Route::get('/permiso/{id}', 'App\Http\Controllers\PermisosController@getPermiso');
+    Route::post('/permisos/add', 'App\Http\Controllers\PermisosController@addPermiso');
+    Route::put('/permiso/update/{id}', 'App\Http\Controllers\PermisosController@update');
+    Route::post('/permiso/delete/{id}', 'App\Http\Controllers\PermisosController@destroy');
 
     //Regiones
     Route::get('regiones/selectRegion', 'App\Http\Controllers\RegionesController@selectRegion');

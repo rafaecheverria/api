@@ -129,11 +129,28 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+          $user = User::findOrFail($id);
+          $user->nombres = $request->nombres;
+          $user->apellidos = $request->apellidos;
+          $user->email = $request->email;
+          $user->fecha_nacimiento = Carbon::parse($request->fecha_nacimiento)->format('Y-m-d');
+          $user->genero = $request->genero;
+          $user->direccion = $request->direccion;
+          $user->departamento_id = $request->departamento_id;
+          $user->region_id = $request->region_id;
+          $user->cargo_id = $request->cargo_id;
+          $user->save();
+
+        return[
+            'success' =>  true,
+        ];
     }
 
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return response()->json([
+            'success' => true,
+        ]);
     }
 }
