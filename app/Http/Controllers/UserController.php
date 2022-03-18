@@ -8,6 +8,7 @@ use App\Models\Departamento;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use \App\Http\Requests\UserRequest;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -62,10 +63,19 @@ class UserController extends Controller
         ];
     }
 
+    public function AgregarRolUsuario(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->syncRoles($request->roles);
+        $user->save();
+        
+        return[
+            'success' => 'true',
+        ];
+    }
+
     public function getUser($id)
     {
-        //return response()->json($id);
-
          $user = User::findOrFail($id);
          $departamentos = Departamento::DeptoReg($user->region_id);
          return response()->json([
