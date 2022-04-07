@@ -66,7 +66,7 @@ class RolesController extends Controller
         $rol = Role::findOrFail($id);
         $rol->syncPermissions($request->permisos);
         $rol->save();
-        
+
         return[
             'success' => 'true',
         ];
@@ -82,12 +82,13 @@ class RolesController extends Controller
             $my_roles = $el_user->roles->pluck('id')->ToArray();
 
         }
-    
+
         return[
             'roles' => $los_roles,
             'my_roles' => $my_roles,
-            'user' => $el_user,
-        
+            'user' => $el_user->nombres.' '.$el_user->apellidos,
+            'user_id' => $el_user->id
+
         ];
     }
 

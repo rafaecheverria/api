@@ -8,6 +8,7 @@ use App\Models\Departamento;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use \App\Http\Requests\UserRequest;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -34,10 +35,12 @@ class UserController extends Controller
     public function userAuth()
     {
         $user = Auth::user();
+        $permisos = $user->permissions->pluck('name');
         return response()->json([
             'email' => $user->email,
             'nombres' => $user->nombres,
-            'apellidos' => $user->apellidos
+            'apellidos' => $user->apellidos,
+            'permisos' => $permisos
         ]);
     }
 
@@ -68,7 +71,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->syncRoles($request->roles);
         $user->save();
-        
+
         return[
             'success' => 'true',
         ];
