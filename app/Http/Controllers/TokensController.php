@@ -9,6 +9,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenBlacklistedException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Spatie\Permission\Models\Permission;
 
 class TokensController extends Controller
 {
@@ -32,10 +33,16 @@ class TokensController extends Controller
         $token = JWTAuth::attempt($credentials);
 
         if($token){
+            $user = User::where('email', $credentials['email'])->get()->first();
+            $user2 = User::findOrFail($user->id);
+            $permisos = $user2->getAllPermissions();
+
             return response()->json([
                 'success' => true,
                 'token' => $token,
-                'usuario'   => User::where('email', $credentials['email'])->get()->first(),
+                'usuario'   => $user,
+                'permisos' => $permisos
+
             ], 200 );
         } else {
             return response()->json([

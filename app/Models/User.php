@@ -8,10 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Traits\HasPermissions;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, Notifiable, HasRoles, HasPermissions;
+
     protected $guard_name = 'api';
 
     protected $fillable = [
@@ -67,4 +70,19 @@ class User extends Authenticatable implements JWTSubject
         return $usuarios;
 
     }
+
+
+    public static function getPermisos(){
+
+        $user = Auth::user();
+        $user2 = User::findOrFail($user->id);
+        $permisos = $user2->getAllPermissions();
+
+        return response()->json([
+            'permisos' => $permisos
+        ]);
+    }
+
+
+
 }

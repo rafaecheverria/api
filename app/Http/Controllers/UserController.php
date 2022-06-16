@@ -35,14 +35,17 @@ class UserController extends Controller
     public function userAuth()
     {
         $user = Auth::user();
-        $permisos = $user->permissions->pluck('name');
+        //$user2 = User::findOrFail($user->id);
+        //$permisos = $user2->getAllPermissions();
         return response()->json([
             'email' => $user->email,
             'nombres' => $user->nombres,
             'apellidos' => $user->apellidos,
-            'permisos' => $permisos
+            //'permisos' => $permisos
         ]);
     }
+
+
 
     public function addUser(UserRequest $request)
     {
