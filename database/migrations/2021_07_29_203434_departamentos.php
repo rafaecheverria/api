@@ -14,10 +14,14 @@ class Departamentos extends Migration
             $table->string('abreviado')->nullable();
             $table->string('sigla')->nullable();
             $table->integer('estado')->default(1);
+            $table->unsignedInteger('tipo_departamento_id')->unsigned();
             $table->unsignedInteger('region_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('region_id')->references('id')->on('regiones')
+            ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('tipo_departamento_id')->references('id')->on('tipo_departamento')
             ->onUpdate('cascade')->onDelete('cascade');
         });
     }
