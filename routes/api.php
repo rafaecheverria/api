@@ -57,6 +57,9 @@ Route::group(['middleware' => ['jwt.auth'], 'prefix' => 'v1'], function () {
     //Departamentos
     Route::get('departamentos/selectDepartamentoReg/{id}', 'App\Http\Controllers\DepartamentosController@selectDepartamentoReg');
     Route::get('departamentos/selectDepartamentoFiltros', 'App\Http\Controllers\DepartamentosController@selectDepartamentoFiltros');
+
+    //Jornadas
+    Route::get('jornadas/selectJornadasDepto/{id}', 'App\Http\Controllers\JornadasController@selectJornadasDepto');
 });
 
 Route::group(['prefix' => 'v1'], function () {

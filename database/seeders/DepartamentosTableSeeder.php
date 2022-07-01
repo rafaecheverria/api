@@ -50,6 +50,7 @@ class DepartamentosTableSeeder extends Seeder
                 [31,'Promoción y Protección de la Infancia nor', 'Prom. y Prot. de la Infancia', 'PPI',2, 8],
                 [32,'Departamento de Educación nor', 'Dep. Educaciòn', 'DE',2, 8],
                 [33,'Jardín Infantil Los Volcanes', 'JI Los Volcanes', 'JILV',1, 18],
+                [34,'Jardín Infantil Las Mariposas', 'JI Las Mariposas', 'JILMP',1, 18],
             ];
             $departamentos = array_map(function($departamento) use ($now){
                return [

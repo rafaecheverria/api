@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Nivel extends Model
 {
     use HasFactory;
+
+    public function jornadas(){
+        return $this->belongsToMany(Jornada::class, 'jornada_nivel');
+    }
+
+    public function grupos(){
+        return $this->belongsToMany(Grupo::class, 'grupo_nivel');
+    }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNivelsTable extends Migration
+class CreateJornadasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateNivelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('nivels', function (Blueprint $table) {
-            $table->id();
-            $table->string('nivel')->nullable();
-            $table->string('grupo')->nullable(); 
-
+        Schema::create('jornadas', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->string('jornada')->nullable();
         });
     }
 
@@ -28,6 +26,6 @@ class CreateNivelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nivels');
+        Schema::dropIfExists('jornadas');
     }
 }

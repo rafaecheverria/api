@@ -30,6 +30,10 @@ class Departamento extends Model
 
     }
 
+    public function jornadas(){
+        return $this->belongsToMany(Jornada::class, 'departamento_jornada');
+    }
+
     public static function DeptoReg($id)
     {
         $departamentos = Departamento::select('id', 'departamento')
