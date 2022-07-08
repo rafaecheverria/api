@@ -10,6 +10,6 @@ class Grupo extends Model
     use HasFactory;
 
     public function niveles(){
-        return $this->belongsToMany(Nivel::class, 'grupo_nivel');
+        return $this->HasMany(Nivel::class);
     }
 }

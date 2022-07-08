@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGrupoNivelTable extends Migration
+class CreateDepartamentoNivelTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,18 @@ class CreateGrupoNivelTable extends Migration
      */
     public function up()
     {
-        Schema::create('grupo_nivel', function (Blueprint $table) {
+        Schema::create('departamento_nivel', function (Blueprint $table) {
             $table->increments('id');
 
-            
+            $table->integer('departamento_id')->unsigned();
             $table->integer('nivel_id')->unsigned();
-            $table->integer('grupo_id')->unsigned();
 
-            
+            $table->foreign('departamento_id')->references('id')->on('departamentos')
+            ->onUpdate('cascade')->onDelete('cascade');
 
             $table->foreign('nivel_id')->references('id')->on('niveles')
             ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->foreign('grupo_id')->references('id')->on('grupos')
-            ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -37,6 +35,6 @@ class CreateGrupoNivelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grupo_nivel');
+        Schema::dropIfExists('departamento_nivel');
     }
 }

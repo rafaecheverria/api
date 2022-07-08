@@ -9,11 +9,12 @@ class Nivel extends Model
 {
     use HasFactory;
 
-    public function jornadas(){
-        return $this->belongsToMany(Jornada::class, 'jornada_nivel');
+    public function departamentos(){
+        return $this->belongsToMany(Deparmamento::class, 'departamento_nivel');
     }
 
     public function grupos(){
-        return $this->belongsToMany(Grupo::class, 'grupo_nivel');
+        return $this->belongsTo(Grupo::class);
     }
+
 }
