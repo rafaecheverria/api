@@ -15,24 +15,29 @@ class Departamento extends Model
         'id', 'departamento', 'abreviado', 'sigla', 'region_id'
     ];
 
-
     public function user()
-
     {
         return $this->HasMany(Users::class);
-
     }
 
     public function region()
-
     {
-        return $this->belongsTo(Region::class);
-
+       return $this->belongsTo(Region::class);
     }
+
+    /*public function niveles(){
+        return $this->belongsToMany(Nivel::class, 'departamento_nivel', 'nivel_id')
+                    ->withPivot('grupo_id', 'jornada_id');
+    }*/
 
     public function niveles(){
-        return $this->belongsToMany(Nivel::class, 'departamento_nivel');
+        return $this->belongsToMany(Nivel::class,'departamento_nivel')
+            ->withPivot('nivel_id');
     }
+   /* public function jornadas(){
+        return $this->belongsToMany(Jornadas::class,'departamento_nivel')
+            ->withPivot('jornada_id'); 
+    }*/
 
     public static function DeptoReg($id)
     {
@@ -42,6 +47,5 @@ class Departamento extends Model
                                     ->get();
 
         return $departamentos;
-
     }
 }

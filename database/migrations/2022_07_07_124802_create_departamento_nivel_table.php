@@ -24,7 +24,7 @@ class CreateDepartamentoNivelTable extends Migration
 
             $table->foreign('nivel_id')->references('id')->on('niveles')
             ->onUpdate('cascade')->onDelete('cascade');
-
+   
         });
     }
 

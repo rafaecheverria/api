@@ -11,21 +11,17 @@ class Jornada extends Model
 {
     use HasFactory;
 
-    public function departamentos(){
-        return $this->belongsToMany(Departamento::class, 'departamento_jornada');
-    }
-
     public function niveles(){
-        return $this->belongsToMany(Nivel::class, 'jornada_nivel');
+        return $this->hasMany(Nivel::class, 'niveles', 'id');
     }
 
-    public static function JornadaDepto($id)
+   /* public static function JornadaDepto($id)
     {
 
-        $departamento = Departamento::findOrFail($id);
+        $departamento = Nivel::findOrFail($id);
         $jornadas = $departamento->jornadas;
 
         return $jornadas;
+    }*/
 
-    }
-}
+ }
