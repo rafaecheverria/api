@@ -22,6 +22,21 @@ class Nivel extends Model
         return $this->belongsToMany(grupos::class, 'departamento_nivel', 'grupo_id');
     }*/
 
+    public function jornadas(){
+        return $this->belongsToMany(jornada::class,'depto_jornada_nivel_grupo')
+            ->withPivot('grupo_id');
+    }
+
+    public function departamentos(){
+        return $this->belongsToMany(Departamento::class,'depto_jornada_nivel_grupo')
+            ->withPivot('jornada_id');
+    }
+
+    public function grupos(){
+        return $this->belongsToMany(Grupo::class,'depto_jornada_nivel_grupo')
+            ->withPivot('jornada_id');
+    }
+/*
     public function departamentos()
     {
         return $this->belongsToMany(Deparmamento::class, 'departamento_nivel')
@@ -29,9 +44,9 @@ class Nivel extends Model
     }
 
     public function jornadas(){
-        return $this->belongsTo(Jornada::class, 'jornadas');
+        return $this->belongsToMany(Jornada::class, 'jornada_nivel');
     }
-
+*/
     public static function NivelDepto($id)
     {
         $departamento = Departamento::findOrFail($id);

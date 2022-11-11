@@ -15,26 +15,24 @@ class NivelesTableSeeder extends Seeder
     public function run()
     {
         $niveles = [
-            [1,'Sala Cuna Menor', 1,1],
-            [2,'Sala Cuna Mayor',1,1],
-            [3,'Sala Cuna',1,1],
-            [4,'Medio Menor',1,1],
-            [5,'Medio Mayor',1,1],
-            [6,'Medios',1,1],
-            [7,'Transicion Menor',1,1],
-            [8,'Transicion Mayor',1,1],
-            [9,'Transiciones',1,1],
-            [10,'Heterogeneo',1,1],
-            [11,'Sala Cuna',2,1],
-            [12,'Sala Cuna',2,2],
+            [1,'Sala Cuna Menor'],
+            [2,'Sala Cuna Mayor'],
+            [3,'Sala Cuna'],
+            [4,'Medio Menor'],
+            [5,'Medio Mayor'],
+            [6,'Medios'],
+            [7,'Transicion Menor'],
+            [8,'Transicion Mayor'],
+            [9,'Transiciones'],
+            [10,'Heterogeneo'],
+            [11,'Sala Cuna'],
+            [12,'Sala Cuna'],
         ];
 
         $niveles = array_map(function($nivel){
             return [
                 'id' => $nivel[0],
                 'nivel' => $nivel[1],
-                'jornada_id' => $nivel[2],
-                'grupo_id' => $nivel[3],
             ];
          }, $niveles);
          DB::table('niveles')->insert($niveles);

@@ -31,9 +31,20 @@ class Departamento extends Model
     }*/
 
     public function niveles(){
-        return $this->belongsToMany(Nivel::class,'departamento_nivel')
-            ->withPivot('nivel_id');
+        return $this->belongsToMany(Nivel::class,'depto_jornada_nivel_grupo')
+            ->withPivot('jornada_id', 'grupo_id');
     }
+
+    public function jornadas(){
+        return $this->belongsToMany(Nivel::class,'depto_jornada_nivel_grupo')
+            ->withPivot('nivel_id', 'grupo_id');
+    }
+
+    public function grupos(){
+        return $this->belongsToMany(Nivel::class,'depto_jornada_nivel_grupo')
+            ->withPivot('nivel_id', 'jornadas_id');
+    }
+
    /* public function jornadas(){
         return $this->belongsToMany(Jornadas::class,'departamento_nivel')
             ->withPivot('jornada_id'); 

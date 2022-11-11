@@ -16,7 +16,7 @@ class CreatePersonaTable extends Migration
         Schema::create('persona', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('rut')->primary();
+            $table->string('rut')->unique();
             $table->string('nombres')->nullable();
             $table->string('apellido_paterno')->nullable();
             $table->string('apellido_materno')->nullable();

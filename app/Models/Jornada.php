@@ -12,7 +12,18 @@ class Jornada extends Model
     use HasFactory;
 
     public function niveles(){
-        return $this->hasMany(Nivel::class, 'niveles', 'id');
+        return $this->belongsToMany(Nivel::class,'depto_jornada_nivel_grupo')
+            ->withPivot('grupo_id');
+    }
+
+    public function departamentos(){
+        return $this->belongsToMany(Departamento::class,'depto_jornada_nivel_grupo')
+            ->withPivot('nivel_id');
+    }
+
+    public function grupos(){
+        return $this->belongsToMany(Grupo::class,'depto_jornada_nivel_grupo')
+            ->withPivot('nivel_id');
     }
 
    /* public static function JornadaDepto($id)

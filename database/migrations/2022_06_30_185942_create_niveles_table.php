@@ -16,16 +16,6 @@ class CreateNivelesTable extends Migration
         Schema::create('niveles', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('nivel')->nullable();
-
-            $table->integer('jornada_id')->unsigned();
-            $table->integer('grupo_id')->unsigned();
-
-            $table->foreign('jornada_id')->references('id')->on('jornadas')
-            ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->foreign('grupo_id')->references('id')->on('grupos')
-            ->onUpdate('cascade')->onDelete('cascade');
-
         });
     }
 
