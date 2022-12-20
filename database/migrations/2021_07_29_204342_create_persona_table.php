@@ -29,15 +29,8 @@ class CreatePersonaTable extends Migration
             $table->string('celular')->nullable();
             $table->string('anexo')->nullable();
             $table->string('pais');
-            $table->integer('estado')->default(1);
-            $table->unsignedInteger('departamento_id')->unsigned();
-            $table->unsignedInteger('region_id')->unsigned()->default(18);
             $table->timestamps();
             $table->rememberToken();
-            $table->foreign('departamento_id')->references('id')->on('departamentos')
-            ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('region_id')->references('id')->on('regiones')
-            ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

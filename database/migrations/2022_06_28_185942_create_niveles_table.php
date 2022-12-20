@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Correlativos extends Migration
+class CreateNivelesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,11 @@ class Correlativos extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('niveles', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->string('nivel')->nullable();
+           
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class Correlativos extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('niveles');
     }
 }

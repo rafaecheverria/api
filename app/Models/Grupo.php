@@ -12,4 +12,8 @@ class Grupo extends Model
     public function niveles(){
         return $this->HasMany(Nivel::class);
     }
+
+    public function departamentos(){
+        return $this->belongsToMany(Departamento::class);
+    }
 }

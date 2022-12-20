@@ -23,12 +23,12 @@ class JornadasController extends Controller
         //$jornadas = $niveles->jornadas;
 
         $departamentos = Departamento::findOrFail($id);
-        $niveles = $departamentos->niveles;
+        $grupos = $departamentos->grupos;
 
 
 
         return [
-           "niveles" => $niveles,
+           "grupos" => $grupos,
            //"jornadas" => $niveles["jornadas"]
         ];
     }

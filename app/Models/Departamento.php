@@ -25,30 +25,9 @@ class Departamento extends Model
        return $this->belongsTo(Region::class);
     }
 
-    /*public function niveles(){
-        return $this->belongsToMany(Nivel::class, 'departamento_nivel', 'nivel_id')
-                    ->withPivot('grupo_id', 'jornada_id');
-    }*/
-
-    public function niveles(){
-        return $this->belongsToMany(Nivel::class,'depto_jornada_nivel_grupo')
-            ->withPivot('jornada_id', 'grupo_id');
-    }
-
-    public function jornadas(){
-        return $this->belongsToMany(Nivel::class,'depto_jornada_nivel_grupo')
-            ->withPivot('nivel_id', 'grupo_id');
-    }
-
     public function grupos(){
-        return $this->belongsToMany(Nivel::class,'depto_jornada_nivel_grupo')
-            ->withPivot('nivel_id', 'jornadas_id');
+        return $this->belongsToMany(Grupo::class,'departamento_grupo');
     }
-
-   /* public function jornadas(){
-        return $this->belongsToMany(Jornadas::class,'departamento_nivel')
-            ->withPivot('jornada_id'); 
-    }*/
 
     public static function DeptoReg($id)
     {

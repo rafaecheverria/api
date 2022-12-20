@@ -60,6 +60,10 @@ Route::group(['middleware' => ['jwt.auth'], 'prefix' => 'v1'], function () {
 
     //Jornadas
     Route::get('jornadas/selectJornadasDepto/{id}', 'App\Http\Controllers\JornadasController@selectJornadasDepto');
+
+    //Grupos
+    Route::get('grupos/selectGruposDepto/{id}', 'App\Http\Controllers\GruposController@selectGruposDepto');
+    Route::post('grupos/traerDatosFiltroEstadisticas', 'App\Http\Controllers\GruposController@traerDatosFiltroEstadisticas');
 });
 
 Route::group(['prefix' => 'v1'], function () {

@@ -25,8 +25,6 @@ class NivelesTableSeeder extends Seeder
             [8,'Transicion Mayor'],
             [9,'Transiciones'],
             [10,'Heterogeneo'],
-            [11,'Sala Cuna'],
-            [12,'Sala Cuna'],
         ];
 
         $niveles = array_map(function($nivel){

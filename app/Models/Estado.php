@@ -14,6 +14,7 @@ class Estado extends Model
 
     public function documentos()
     {
-        return $this->belongsToMany(Documento::class, 'documento_estado', 'documento_id','estado_id')->withPivot('proveido', 'origen_id', 'fecha_creado', 'fecha_actualizado', 'origen_id', 'destino_id');
+        return $this->belongsToMany(Documento::class, 'documento_estado', 'documento_id','estado_id')
+                    ->withPivot('proveido', 'origen_id', 'fecha_creado', 'fecha_actualizado', 'origen_id', 'destino_id');
     }
 }

@@ -16,6 +16,15 @@ class CreateGruposTable extends Migration
         Schema::create('grupos', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('grupo')->nullable();
+            $table->unsignedInteger('nivel_id')->unsigned();
+            $table->unsignedInteger('jornada_id')->unsigned();
+            $table->string('capacidad')->nullable();
+
+            $table->foreign('nivel_id')->references('id')->on('niveles')
+            ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('jornada_id')->references('id')->on('jornadas')
+            ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
